@@ -105,9 +105,9 @@ class _AuthPage extends State<WebAuthenticatePage>
                               onPressed: () async {
                                 bool result = await AuthorizeRequestToFireBase(email, password);
                                 if(result){
-                                  message = "ログイン成功(DEBUG MESSAGE)";
+                                  this.message = "ログイン成功(DEBUG MESSAGE)";
                                 }else if(!result){
-                                  message = "ログイン失敗(DEBUG MESSAGE)";
+                                  this.message = "ログイン失敗(DEBUG MESSAGE)";
                                 }
                               },
                           ),

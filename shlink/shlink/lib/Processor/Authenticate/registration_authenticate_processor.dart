@@ -46,9 +46,17 @@ Future<String> FireBaseUidReturn(String email, String password) async {
     password: password,
   );
 
-  // メールアドレスアクティベーションを実施
-  await auth.currentUser?.sendEmailVerification();
+  final _isVerified = await auth.currentUser?.emailVerified;
+
+  if(!_isVerified!) {
+    // メールアドレスアクティベーションを実施
+    await auth.currentUser?.sendEmailVerification();
+  }
+
+  final UserId = authResult.user!.uid;
+
+  await auth.signOut();
 
   // authResult.userがnullになる可能性はないので、!で強制的に返却
-  return authResult.user!.uid;
+  return UserId;
 }

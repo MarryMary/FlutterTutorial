@@ -122,12 +122,16 @@ class _RegistPage extends State<WebRegistrationPage>
                                 bool result = await RegistrationToFirebase(
                                     email, password, username);
                                 if (result) {
-                                  message = "登録完了、メール送信（DEBUG MESSAGE）";
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => AuthenticatePlatform(),
+                                      )
+                                  );
                                 } else if (!result) {
-                                  message = "登録失敗（DEBUG MESSAGE）";
+                                  this.message = "登録失敗（DEBUG MESSAGE）";
                                 }
                               }else{
-                                message = varidated;
+                                this.message = varidated;
                               }
                             },
                           ),
